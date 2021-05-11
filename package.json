@@ -1,0 +1,20 @@
+{
+  "name": "ton-technical-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusCorreia96/ton-technical-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatheusCorreia96/ton-technical-challenge/issues"
+  },
+  "homepage": "https://github.com/MatheusCorreia96/ton-technical-challenge#readme"
+}
