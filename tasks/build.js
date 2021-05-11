@@ -4,7 +4,7 @@ const exec = require('child_process').exec;
 const execPromise = bluebird.Promise.promisify(exec);
 
 const compile = async () => {
-  return execPromise('tsc -p src');
+  return execPromise('tsc');
 };
 
 const copyFiles = async () => {

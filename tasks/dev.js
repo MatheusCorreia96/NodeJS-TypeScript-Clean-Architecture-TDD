@@ -45,7 +45,7 @@ const startNodeServer = () => {
 };
 
 const tsWatch = (done) => {
-  const ts = childProcess.spawn('tsc', ['-w -p src', '--skipLibCheck']);
+  const ts = childProcess.spawn('tsc', ['-w', '--skipLibCheck']);
 
   ts.stdout.on('data', (data) => {
     console.log(data.toString());

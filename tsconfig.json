@@ -1,45 +1,27 @@
 {
   "compilerOptions": {
-    "noImplicitAny": true,
-    "declaration": false,
-    "strict": true,
-    "strictNullChecks": false,
-    "target": "ES2020",
     "module": "commonjs",
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "checkJs": false,
-    "outDir": "dist",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "inlineSourceMap": true,
-    "rootDir": "./src",
+    "noLib": false,
+    "noImplicitAny": false,
+    "outDir": "./dist",
     "baseUrl": "./src",
-    "typeRoots": [
-      "./node_modules/@types",
-      "src/infra/@js-types"
-    ],
-    "paths": {
-      "@adapters/*": [
-        "adapters/*"
-      ],
-      "@constants/*": [
-        "constants/*"
-      ],
-      "@interactors/*": [
-        "interactors/*"
-      ],
-      "@entities/*": [
-        "entities/*"
-      ],
-      "@middlewares/*": [
-        "infra/http/middlewares/*"
-      ]
-    }
+    "typeRoots": ["node_modules/@types", "types"],
+    "incremental": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node"
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.js",
-    "src/**/*.json"
+  "include": ["**/src/**/.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "*/.spec.ts"
   ]
 }
