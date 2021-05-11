@@ -1,0 +1,13 @@
+{
+  "httpServer": {
+    "port": 3001
+  },
+  "aws": {
+    "dynamodb": {
+      "endpoint": "http://127.0.0.1:8000",
+      "accessKeyId": "accessKeyId",
+      "secretAccessKey": "secretAccessKey",
+      "region": "us-east-1"
+    }
+  }
+}

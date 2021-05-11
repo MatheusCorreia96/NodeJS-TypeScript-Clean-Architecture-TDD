@@ -1,0 +1,7 @@
+{
+  "dynamoDB": {
+    "lcoationCustomIds": {
+      "table": "users"
+    }
+  }
+}

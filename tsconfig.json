@@ -1,15 +1,45 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",                             /* Base directory to resolve non-absolute module names. */
+    "noImplicitAny": true,
+    "declaration": false,
+    "strict": true,
+    "strictNullChecks": false,
+    "target": "ES2020",
+    "module": "commonjs",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": false,
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "inlineSourceMap": true,
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "typeRoots": [
+      "./node_modules/@types",
+      "src/infra/@js-types"
+    ],
     "paths": {
-      "@/*": ["./*"],
-      "@domain/*": ["domain/*"],
-      "@infra/*": ["infra/*"],
-      "@presentation/*": ["presentation/*"],
-      "@shared/*": ["shared/*"],
-      "@config/*": ["config/*"]
-    },                                 /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
-    "rootDir": "src",                              /* List of root folders whose combined content represents the structure of the project at runtime. */
-    
-  }
+      "@adapters/*": [
+        "adapters/*"
+      ],
+      "@constants/*": [
+        "constants/*"
+      ],
+      "@interactors/*": [
+        "interactors/*"
+      ],
+      "@entities/*": [
+        "entities/*"
+      ],
+      "@middlewares/*": [
+        "infra/http/middlewares/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.json"
+  ]
 }
