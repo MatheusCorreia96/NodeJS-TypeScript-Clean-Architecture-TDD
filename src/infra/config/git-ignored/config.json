@@ -9,5 +9,10 @@
       "secretAccessKey": "secretAccessKey",
       "region": "us-east-1"
     }
+  },
+  "api": {
+    "url": "https://api.countapi.xyz",
+    "name": "matheus.correia",
+    "secretKey": "bigsecretkey"
   }
 }
