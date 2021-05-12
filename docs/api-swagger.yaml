@@ -1,0 +1,138 @@
+openapi: 3.0.0
+info:
+  title: Desafio Técnico
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+    description: Server de teste
+
+paths:
+  /accesses:
+    post:
+      tags:
+        - Access-Count
+      summary: Incrementar número de acessos
+      responses:
+        '201':
+          description: Sucesso ao incrementar o número de acessos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 2
+        '500':
+          description: Erro ao incrementar o número de acessos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nome:
+                    type: string
+                    example: erro_interno_servidor
+                  mensagem:
+                    type: string
+                    example: Erro interno do servidor
+    get:
+      tags:
+        - Access-Count
+      summary: Consultar número total de acessos
+      responses:
+        '200':
+          description: Sucesso ao consultar número total de acessos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                    example: 2
+        '500':
+          description: Erro ao consultar número total de acessos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nome:
+                    type: string
+                    example: erro_interno_servidor
+                  mensagem:
+                    type: string
+                    example: Erro interno do servidor
+
+  /user:
+    post:
+      tags:
+        - Users
+      summary: Criação de um novo usuário.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: nameTest
+                email:
+                  type: string
+                  example: email@email.com
+                secretKey:
+                  type: string
+                  example: secretKey
+      responses:
+        '201':
+          description: Usuário cadastrado
+        '500':
+          description: Erro ao criar usuário
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nome:
+                    type: string
+                    example: error_application
+                  mensagem:
+                    type: string
+                    example: User already registered
+
+    get:
+      tags:
+        - Users
+      summary: Consultar usuário cadastrado
+      responses:
+        '200':
+          description: Sucesso ao consultar usuário
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: nameTest
+                  email:
+                    type: string
+                    example: email@email.com
+
+        '500':
+          description: Erro ao consultar usuário
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nome:
+                    type: string
+                    example: error_application
+                  mensagem:
+                    type: string
+                    example: User not exist
