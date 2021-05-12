@@ -1,11 +1,11 @@
 import { AppContainer } from 'infra/bootstrap/register';
-import { AccessCountGateway, PostAccessCountOutput } from './access-count.types';
+import { IncrementAccessCountGateway } from './increment-access-count.types';
 
-export default class AccessCountBs {
-  private gateway: AccessCountGateway;
+export default class IncrementAccessCountBs {
+  private gateway: IncrementAccessCountGateway;
 
   constructor(params: AppContainer) {
-    this.gateway = params.accessCountImpl;
+    this.gateway = params.incrementAccessCountImpl;
   }
 
   public async execute(): Promise<number> {

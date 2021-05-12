@@ -11,9 +11,11 @@ import AWS from 'aws-sdk';
 import axios, { AxiosStatic } from 'axios';
 import forge from 'node-forge';
 
-import AccessCountBs from '@interactors/access-count/access-count.bs';
+import IncrementAccessCountBs from '@interactors/access-count/increment/increment-access-count.bs';
+import GetAccessCountBs from '@interactors/access-count/get/get-access-count.bs';
 
-import AccessCountImpl from '@adapters/gateways/access-count/access-count.impl';
+import IncrementAccessCountImpl from '@adapters/gateways/access-count/increment/increment-access-count.impl';
+import GetAccessCountImpl from '@adapters/gateways/access-count/get/get-access-count.impl';
 
 const asyncPromise = bluebird.promisifyAll(asyncLib);
 
@@ -34,8 +36,11 @@ export type AppContainer = {
 
   requestId: string
 
-  accessCountBs: AccessCountBs
-  accessCountImpl: AccessCountImpl
+  incrementAccessCountBs: IncrementAccessCountBs
+  getAccessCountBs: GetAccessCountBs
+  
+  incrementAccessCountImpl: IncrementAccessCountImpl
+  getAccessCountImpl: GetAccessCountImpl
 }
 
 export const setupContainer = (config: Config): AwilixContainer => {

@@ -6,4 +6,7 @@ export default (app: Application) => {
     .post(
       accessCountCtrl.increment
     )
+    .get(
+      accessCountCtrl.getCount
+    )
 }

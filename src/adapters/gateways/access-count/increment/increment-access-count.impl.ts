@@ -1,9 +1,9 @@
-import { AccessCountGateway, IncrementCountVisits } from '@interactors/access-count/access-count.types';
+import { IncrementAccessCountGateway } from '@interactors/access-count/increment/increment-access-count.types';
 import { Config } from 'infra/config/config';
 import { AppContainer } from 'infra/bootstrap/register';
 import { AxiosStatic, AxiosRequestConfig } from 'axios'
 
-export default class AccessCountImpl implements AccessCountGateway {
+export default class IncrementAccessCountImpl implements IncrementAccessCountGateway {
   private config: Config;
   private axios: AxiosStatic;
 
@@ -13,9 +13,7 @@ export default class AccessCountImpl implements AccessCountGateway {
   }
 
   public async incrementCount(): Promise<any> {
-    console.log(`${this.config.api.url}/hit/${this.config.api.name}/${this.config.api.secretKey}`);
-
-    const options: AxiosRequestConfig = {
+   const options: AxiosRequestConfig = {
       method: 'get',
       url: `${this.config.api.url}/hit/${this.config.api.name}/${this.config.api.secretKey}`
     }
