@@ -19,4 +19,11 @@ src/infra/config/databases.json
 
 src/infra/config/certs
 
+DynamoDBLocal_lib/
+dynamolocal/
+DynamoDBLocal.jar/
+LICENSE.txt
+README.txt
+THIRD-PARTY-LICENSE.txt
+
 tmp/*
