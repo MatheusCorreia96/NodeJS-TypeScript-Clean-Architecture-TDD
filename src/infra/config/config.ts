@@ -40,8 +40,8 @@ const PARAMETER_TIMEZONE = `/${env}/common/timezone`;
 const getParameters = async (): Promise<{ [key: string]: string }> => {
   if (env === Env.Development) {
     return {
-      [PARAMETER_CONFIG]: fs.readFileSync(`${__dirname}\\config.json`).toString(), //FIX: ARRUMAR A BARRA
-      [PARAMETER_DATABASES]: fs.readFileSync(`${__dirname}\\databases.json`).toString(), //FIX: ARRUMAR A BARRA
+      [PARAMETER_CONFIG]: fs.readFileSync(`${__dirname}/config.json`).toString(), //FIX: ARRUMAR A BARRA
+      [PARAMETER_DATABASES]: fs.readFileSync(`${__dirname}/databases.json`).toString(), //FIX: ARRUMAR A BARRA
       [PARAMETER_TIMEZONE]: 'America/Sao_Paulo',
     };
   }

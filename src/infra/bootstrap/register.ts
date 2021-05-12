@@ -80,11 +80,11 @@ export const setupContainer = (config: Config): AwilixContainer => {
   const baseDir = path.resolve(`${__dirname} + '/../..`);
 
   container.loadModules([
-    `${baseDir}\\interactors\\**\\*.js`,
-    `${baseDir}\\adapters\\gateways\\**\\*.js`,
-    `${baseDir}\\adapters\\handlers\\**\\*.js`,
-    `${baseDir}\\adapters\\presenters\\**\\*.js`,
-    `${baseDir}\\adapters\\repositories\\**\\*.js`
+    `${baseDir}/interactors/**/*.js`,
+    `${baseDir}/adapters/gateways/**/*.js`,
+    `${baseDir}/adapters/handlers/**/*.js`,
+    `${baseDir}/adapters/presenters/**/*.js`,
+    `${baseDir}/adapters/repositories/**/*.js`
   ], {
     formatName: (name: string) => {
       name = lodash.camelCase(name);
