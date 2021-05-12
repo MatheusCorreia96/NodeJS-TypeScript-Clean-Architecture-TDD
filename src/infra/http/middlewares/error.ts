@@ -9,6 +9,8 @@ export default (err: HttpError, req: Request, res: Response, next: NextFunction)
   if (err instanceof ApplicationError) {
     console.log('HTTP request error', { err });
 
+    status = 400;
+
     errorResponse = {
       nome: err.name,
       mensagem: err.message
