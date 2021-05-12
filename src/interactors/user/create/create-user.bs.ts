@@ -22,7 +22,6 @@ export default class CreateUserBs {
   }
 
   private async buildUser(input: CreateUserInput): Promise<User> {
-    console.log('input buildUser', input);
     if(!input.secretKey){
       throw new Error('SecretKey cannot be empty');
     }

@@ -16,10 +16,12 @@ import {v4 as uuidv4 } from 'uuid';
 import IncrementAccessCountBs from '@interactors/access-count/increment/increment-access-count.bs';
 import GetAccessCountBs from '@interactors/access-count/get/get-access-count.bs';
 import CreateUserBs from '@interactors/user/create/create-user.bs';
+import GetUserBs from '@interactors/user/get/get-user.bs';
 
 import IncrementAccessCountImpl from '@adapters/gateways/access-count/increment/increment-access-count.impl';
 import GetAccessCountImpl from '@adapters/gateways/access-count/get/get-access-count.impl';
-import CreateUserImpl from "adapters/gateways/user/create/create-user.impl";
+import CreateUserImpl from 'adapters/gateways/user/create/create-user.impl';
+import GetUserImpl from 'adapters/gateways/user/get/get-user.impl';
 
 const asyncPromise = bluebird.promisifyAll(asyncLib);
 
@@ -46,10 +48,12 @@ export type AppContainer = {
   incrementAccessCountBs: IncrementAccessCountBs
   getAccessCountBs: GetAccessCountBs
   createUserBs: CreateUserBs
+  getUserBs: GetUserBs
   
   incrementAccessCountImpl: IncrementAccessCountImpl
   getAccessCountImpl: GetAccessCountImpl
   createUserImpl: CreateUserImpl
+  getUserImpl: GetUserImpl
 }
 
 export const setupContainer = (config: Config): AwilixContainer => {

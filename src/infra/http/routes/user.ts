@@ -6,4 +6,7 @@ export default (app: Application) => {
     .post(
       userCtrl.create
     )
+    .get(
+      userCtrl.get
+    )
 }

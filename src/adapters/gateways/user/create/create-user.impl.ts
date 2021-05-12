@@ -40,8 +40,6 @@ export default class CreateUserImpl implements CreateUserGateway {
 
     const response = await this.dynamoDB.getItem(query).promise();
 
-    console.log('response ', response);
-
     if(response.Item){
       return true;
     }
