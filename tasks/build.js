@@ -10,6 +10,8 @@ const compile = async () => {
 const copyFiles = async () => {
   await execPromise('cp package.json dist/');
   await execPromise('cp package-lock.json dist/');
+  await execPromise('cp src/infra/config/git-ignored/config.json src/infra/config/');
+  await execPromise('cp src/infra/config/git-ignored/databases.json src/infra/config/');
   await execPromise('cp src/infra/config/config.json dist/infra/config');
   await execPromise('cp src/infra/config/databases.json dist/infra/config');
 };
