@@ -10,10 +10,12 @@ const compile = async () => {
 const copyFiles = async () => {
   await execPromise('cp package.json dist/');
   await execPromise('cp package-lock.json dist/');
+  await execPromise('cp src/infra/config/config.json dist/infra/config');
+  await execPromise('cp src/infra/config/databases.json dist/infra/config');
 };
 
 const installDependencies = async () => {
-  await execPromise('npm install --production --prefix dist');
+  await execPromise('npm install');
 };
 
 const clean = async () => {

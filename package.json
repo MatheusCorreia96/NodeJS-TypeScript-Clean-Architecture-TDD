@@ -1,5 +1,5 @@
 {
-  "name": "ton-technical-challenge",
+  "name": "project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -37,7 +37,8 @@
     "lodash": "^4.17.20",
     "module-alias": "^2.2.2",
     "node-forge": "^0.10.0",
-    "read-pkg-up": "^7.0.1"
+    "read-pkg-up": "^7.0.1",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
@@ -52,6 +53,7 @@
     "@typescript-eslint/eslint-plugin": "^4.4.1",
     "@typescript-eslint/parser": "^4.4.1",
     "@types/jest": "^26.0.23",
+    "@types/uuid": "^7.0.3",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "gulp-eslint": "^6.0.0",

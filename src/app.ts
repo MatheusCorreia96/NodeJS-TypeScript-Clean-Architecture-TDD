@@ -40,8 +40,6 @@ async function init() {
 
     container = setupContainer(config);
 
-    const appContainer: AppContainer = container.cradle;
-
     startHttpServer(config, container);
 
     console.log('Bootstrapped');

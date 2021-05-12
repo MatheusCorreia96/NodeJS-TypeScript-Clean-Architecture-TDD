@@ -16,12 +16,23 @@
     "incremental": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node"
-  },
-  "include": ["**/src/**/.ts"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "*/.spec.ts"
-  ]
+    "moduleResolution": "node",
+    "paths": {
+      "@adapters/*": [
+        "adapters/*"
+      ],
+      "@constants/*": [
+        "constants/*"
+      ],
+      "@interactors/*": [
+        "interactors/*"
+      ],
+      "@entities/*": [
+        "entities/*"
+      ],
+      "@middlewares/*": [
+        "infra/http/middlewares/*"
+      ]
+    }
+  }
 }

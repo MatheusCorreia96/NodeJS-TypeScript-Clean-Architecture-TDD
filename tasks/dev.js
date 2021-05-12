@@ -45,15 +45,15 @@ const startNodeServer = () => {
 };
 
 const tsWatch = (done) => {
-  const ts = childProcess.spawn('tsc', ['-w', '--skipLibCheck']);
-
+  const ts = childProcess.spawn('tsc', ['-w', '--skipLibCheck'], {shell: process.platform == 'win32'});
+  
   ts.stdout.on('data', (data) => {
     console.log(data.toString());
     if (data.toString().includes('Found')) {
       startNodeServer();
     }
   });
-
+  
   process.on('SIGINT', () => {
     done();
   });

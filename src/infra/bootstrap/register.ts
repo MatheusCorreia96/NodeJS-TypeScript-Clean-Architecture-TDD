@@ -11,6 +11,10 @@ import AWS from 'aws-sdk';
 import axios, { AxiosStatic } from 'axios';
 import forge from 'node-forge';
 
+import AccessCountBs from '@interactors/access-count/access-count.bs';
+
+import AccessCountImpl from '@adapters/gateways/access-count/access-count.impl';
+
 const asyncPromise = bluebird.promisifyAll(asyncLib);
 
 export type AsyncLib = typeof asyncPromise;
@@ -29,6 +33,9 @@ export type AppContainer = {
   forge: typeof forge
 
   requestId: string
+
+  accessCountBs: AccessCountBs
+  accessCountImpl: AccessCountImpl
 }
 
 export const setupContainer = (config: Config): AwilixContainer => {
@@ -54,11 +61,11 @@ export const setupContainer = (config: Config): AwilixContainer => {
   const baseDir = path.resolve(`${__dirname} + '/../..`);
 
   container.loadModules([
-    `${baseDir}/interactors/*/.js`,
-    `${baseDir}/adapters/gateways/*/.js`,
-    `${baseDir}/adapters/handlers/*/.js`,
-    `${baseDir}/adapters/presenters/*/.js`,
-    `${baseDir}/adapters/repositories/*/.js`
+    `${baseDir}\\interactors\\**\\*.js`,
+    `${baseDir}\\adapters\\gateways\\**\\*.js`,
+    `${baseDir}\\adapters\\handlers\\**\\*.js`,
+    `${baseDir}\\adapters\\presenters\\**\\*.js`,
+    `${baseDir}\\adapters\\repositories\\**\\*.js`
   ], {
     formatName: (name: string) => {
       name = lodash.camelCase(name);

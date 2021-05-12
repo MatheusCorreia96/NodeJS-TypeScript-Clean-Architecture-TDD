@@ -65,16 +65,16 @@ const createDynamoDBTables = async () => {
 
 
   await createTable({
-    TableName: config.databases.dynamoDB.locationCustomIds.table,
+    TableName: config.databases.dynamoDB.accessCount.table,
     AttributeDefinitions: [
       {
-        AttributeName: 'client_id',
-        AttributeType: 'S'
+        AttributeName: 'count',
+        AttributeType: 'N'
       }
     ],
     KeySchema: [
       {
-        AttributeName: 'client_id',
+        AttributeName: 'count',
         KeyType: 'HASH'
       }
     ],

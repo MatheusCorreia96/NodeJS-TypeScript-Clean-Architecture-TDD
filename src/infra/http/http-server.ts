@@ -8,6 +8,7 @@ import routes from './routes';
 import cors from 'cors';
 
 import errorMdw from './middlewares/error';
+import requestScopeMdw from './middlewares/request-scope';
 
 import { ApplicationError } from 'infra/tools/errors/application';
 
@@ -17,10 +18,6 @@ declare global {
       id: string
       container: AwilixContainer
       key: {
-        account: number
-        accountCode: string
-        clientId: string
-        scopes: string[]
         settings: Object
       }
     }
@@ -50,8 +47,8 @@ export const startHttpServer = (config: Config, container: AwilixContainer): voi
   app.route('/healthcheck')
     .get((req, res) => res.status(200).end());
 
-  app.use(cors({ origin: true, credentials: true }));
-
+  app.use(requestScopeMdw(container));
+  app.use(cors({ origin: true, credentials: true })); 
   app.use(bodyParser.json());
 
   routes(app);

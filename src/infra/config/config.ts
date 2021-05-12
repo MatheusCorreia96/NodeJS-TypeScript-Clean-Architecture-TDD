@@ -9,8 +9,6 @@ const appPackage = readPkgUp.sync({ normalize: false }).packageJson;
 
 export type Config = {
   readonly env: Env
-  readonly sandbox: boolean
-  readonly timezone: string
 
   readonly httpServer: {
     readonly port: number
@@ -22,6 +20,12 @@ export type Config = {
         readonly table: string
       }
     }
+  }
+
+  readonly api: {
+    readonly url: string,
+    readonly name: string,
+    readonly secretKey: string
   }
 };
 
@@ -36,8 +40,8 @@ const PARAMETER_TIMEZONE = `/${env}/common/timezone`;
 const getParameters = async (): Promise<{ [key: string]: string }> => {
   if (env === Env.Development) {
     return {
-      [PARAMETER_CONFIG]: fs.readFileSync(`${__dirname}/config.json`).toString(),
-      [PARAMETER_DATABASES]: fs.readFileSync(`${__dirname}/databases.json`).toString(),
+      [PARAMETER_CONFIG]: fs.readFileSync(`${__dirname}\\config.json`).toString(), //FIX: ARRUMAR A BARRA
+      [PARAMETER_DATABASES]: fs.readFileSync(`${__dirname}\\databases.json`).toString(), //FIX: ARRUMAR A BARRA
       [PARAMETER_TIMEZONE]: 'America/Sao_Paulo',
     };
   }
@@ -73,7 +77,6 @@ export const getConfig = async (): Promise<Config> => {
   config.sandbox = sandbox;
   config.timezone = params[PARAMETER_TIMEZONE];
   config.databases = databases;
-  config.databases.redis.keyPrefix = `${appPackage.name}:${env}`;
 
   if (env === Env.Development && config.aws) {
     AWS.config.update(config.aws);
