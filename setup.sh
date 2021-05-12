@@ -9,8 +9,4 @@ tar xzf dynamodb_local_latest.tar.gz
 rm -f dynamodb_local_latest.tar.gz
 java -Djava.library.path=./DynamoDBLocal_lib/ -jar DynamoDBLocal.jar
 
-npm run build
-npm run setup
-npm run start
-
 #END
