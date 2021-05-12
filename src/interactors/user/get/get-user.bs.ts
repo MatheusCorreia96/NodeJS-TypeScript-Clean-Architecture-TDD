@@ -1,5 +1,6 @@
 import { AppContainer } from 'infra/bootstrap/register';
 import { GetUserGateway, GetUserInput, GetUserOutput } from './get-user.types';
+import { ApplicationError, ApplicationErrorMessage} from 'infra/tools/errors/application';
 
 export default class GetUserBs {
   private gateway: GetUserGateway;
@@ -12,7 +13,7 @@ export default class GetUserBs {
     const user = await this.gateway.getUser(input.email);
 
     if (!user){
-      throw new Error('User not exist')
+      throw new ApplicationError(ApplicationErrorMessage.UserNotExist);
     }
 
     return {

@@ -1,6 +1,7 @@
 import { AppContainer } from 'infra/bootstrap/register';
 import { CreateUserGateway, CreateUserInput } from './create-user.types';
 import { User } from '@entities/user.entity';
+import { ApplicationError, ApplicationErrorMessage} from 'infra/tools/errors/application';
 
 export default class CreateUserBs {
   private gateway: CreateUserGateway;
@@ -15,7 +16,7 @@ export default class CreateUserBs {
     const isUserExist = await this.gateway.findByEmail(input.email);
 
     if (isUserExist){
-      throw new Error('User already registered')
+      throw new ApplicationError(ApplicationErrorMessage.UserAlreadyExist)
     }
       
     await this.gateway.create(user);
@@ -23,7 +24,7 @@ export default class CreateUserBs {
 
   private async buildUser(input: CreateUserInput): Promise<User> {
     if(!input.secretKey){
-      throw new Error('SecretKey cannot be empty');
+      throw new ApplicationError(ApplicationErrorMessage.SecretKeyEmpty);
     }
 
     const secretKeyHash = await this.gateway.createHashFromSecret(input.secretKey);

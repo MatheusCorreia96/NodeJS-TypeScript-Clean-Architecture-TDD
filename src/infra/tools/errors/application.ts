@@ -1,10 +1,12 @@
 export enum ApplicationErrorMessage {
-  genericError = 'Error na aplicação'
+  UserAlreadyExist = 'User already registered',
+  SecretKeyEmpty = 'SecretKey cannot be empty',
+  UserNotExist = 'User not exist'
 }
 
 export class ApplicationError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = 'erro_aplicacao';
+    this.name = 'error_application';
   }
 }
