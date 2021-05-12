@@ -10,7 +10,6 @@ export default class GetAccessCountBs {
 
   public async execute(): Promise<number> {
     const count = await this.gateway.getCount();
-    console.log(count);
     return count.data.value;
   }
 }

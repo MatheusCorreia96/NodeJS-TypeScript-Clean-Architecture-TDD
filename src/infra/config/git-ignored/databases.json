@@ -1,7 +1,7 @@
 {
   "dynamoDB": {
-    "accessCount": {
-      "table": "count"
+    "Users": {
+      "table": "user"
     }
   }
 }

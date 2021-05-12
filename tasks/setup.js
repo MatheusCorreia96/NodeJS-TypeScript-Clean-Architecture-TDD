@@ -65,16 +65,16 @@ const createDynamoDBTables = async () => {
 
 
   await createTable({
-    TableName: config.databases.dynamoDB.accessCount.table,
+    TableName: config.databases.dynamoDB.Users.table,
     AttributeDefinitions: [
       {
-        AttributeName: 'count',
-        AttributeType: 'N'
+        AttributeName: 'email',
+        AttributeType: 'S'
       }
     ],
     KeySchema: [
       {
-        AttributeName: 'count',
+        AttributeName: 'email',
         KeyType: 'HASH'
       }
     ],

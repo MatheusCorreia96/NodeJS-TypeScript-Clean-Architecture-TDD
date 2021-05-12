@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/MatheusCorreia96/ton-technical-challenge#readme",
   "dependencies": {
+    "argon2": "^0.27.1",
     "async": "^3.2.0",
     "aws-sdk": "^2.738.0",
     "axios": "^0.21.1",
