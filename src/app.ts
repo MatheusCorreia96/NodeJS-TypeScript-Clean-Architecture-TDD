@@ -38,11 +38,8 @@ process.on('unhandledRejection', (error) => {
 
 async function init() {
   try {
-    console.log('11111111');
     const config = await getConfig();
-    console.log('2222222222');
     container = setupContainer(config);
-    console.log('3333333');
     startHttpServer(config, container);
 
     console.log('Bootstrapped');
