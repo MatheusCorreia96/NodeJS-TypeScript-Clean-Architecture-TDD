@@ -1,0 +1,23 @@
+{
+  "id": "get-user",
+  "type": "object",
+  "required": [
+      "body"
+  ],
+  "properties": {
+      "body": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "email": {
+                "type": "string",
+                "minLength": 5,
+                "maxLength": 200
+              }
+          },
+          "required": [
+              "email"
+          ]
+      }
+  }
+}

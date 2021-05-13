@@ -14,6 +14,7 @@ const copyFiles = async () => {
   await execPromise('cp src/infra/config/git-ignored/databases.json src/infra/config/');
   await execPromise('cp src/infra/config/config.json dist/infra/config');
   await execPromise('cp src/infra/config/databases.json dist/infra/config');
+  await execPromise('cp -R src/infra/tools/validators dist/infra/tools/validators');
 };
 
 const installDependencies = async () => {

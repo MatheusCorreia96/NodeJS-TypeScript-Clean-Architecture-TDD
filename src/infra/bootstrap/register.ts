@@ -1,4 +1,6 @@
 import { createContainer, asValue, asClass, asFunction, AwilixContainer, InjectionMode, Lifetime } from 'awilix';
+import Ajv from 'ajv';
+import localize from 'ajv-i18n';
 import fs from 'fs';
 import crypto from 'crypto';
 import lodash from 'lodash';
@@ -32,6 +34,8 @@ export type AppContainer = {
   env: string
   config: Config
   path: typeof path
+  ajv: Ajv.Ajv
+  ajvLocalize: typeof localize
   fs: typeof fs
   crypto: typeof crypto
   lodash: typeof lodash
@@ -65,6 +69,8 @@ export const setupContainer = (config: Config): AwilixContainer => {
     env: asValue(config.env),
     config: asValue(config),
     path: asValue(path),
+    ajv: asValue(new Ajv({schemaId: 'auto'})),
+    ajvLocalize: asValue(localize),
     fs: asValue(fs),
     crypto: asValue(crypto),
     lodash: asValue(lodash),

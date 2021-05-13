@@ -1,0 +1,34 @@
+{
+  "id": "create-user",
+  "type": "object",
+  "required": [
+      "body"
+  ],
+  "properties": {
+      "body": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+              "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 200
+              },
+              "secretKey": {
+                "type": "string",
+                "minLength": 7
+              },
+              "email": {
+                "type": "string",
+                "minLength": 5,
+                "maxLength": 200
+              }
+          },
+          "required": [
+              "name",
+              "secretKey",
+              "email"
+          ]
+      }
+  }
+}

@@ -10,9 +10,41 @@
     "lint": "gulp eslint",
     "type-checking": "tsc --noEmit --skipLibCheck",
     "build": "npm install && gulp build",
-    "test": "jest --passWithNoTests  --no-cache --noStackTrace --runInBand",
-    "test:unit": "npm test -- --watch -c jest-unit-config.js",
-    "test:coverage": "jest --collect-coverage"
+    "test:watch": "mocha --require ts-node/register --watch --watch-files app, 'src/*/.spec.ts'",
+    "coverage": "nyc --reporter=text-summary npm run test --recursive",
+    "coverage-html": "nyc --reporter=html npm run test --recursive",
+    "coverage:watch": "nyc --reporter=html npm run test:watch --recursive --watch"
+  },
+  "nyc": {
+    "extends": "@istanbuljs/nyc-config-typescript",
+    "all": true,
+    "check-coverage": true,
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100,
+    "sourceMap": true,
+    "cache": true,
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/interactors/*/.ts",
+      "src/adapters/*/.ts",
+      "src/entities/*/.ts"
+    ],
+    "exclude": [
+      "src/adapters/controllers/*.ts",
+      "coverage/**",
+      "node_modules/**",
+      "*/.d.ts",
+      "*/.spec.ts"
+    ],
+    "reporter": [
+      "html",
+      "text",
+      "text-summary"
+    ]
   },
   "repository": {
     "type": "git",
@@ -26,6 +58,8 @@
   },
   "homepage": "https://github.com/MatheusCorreia96/ton-technical-challenge#readme",
   "dependencies": {
+    "ajv": "^6.12.4",
+    "ajv-i18n": "^3.6.0",
     "argon2": "^0.27.1",
     "async": "^3.2.0",
     "aws-sdk": "^2.738.0",
