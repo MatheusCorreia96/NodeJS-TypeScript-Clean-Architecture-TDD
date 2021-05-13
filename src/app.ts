@@ -16,7 +16,9 @@ if (!process.env.NODE_EXTRA_CA_CERTS) {
 }
 
 if (fs.existsSync(process.env.NODE_EXTRA_CA_CERTS)) {
-  https.globalAgent.options.ca = fs.readFileSync(process.env.NODE_EXTRA_CA_CERTS);
+  https.globalAgent.options.ca = fs.readFileSync(
+    process.env.NODE_EXTRA_CA_CERTS
+  );
 }
 
 https.globalAgent.options.keepAlive = true;
@@ -36,10 +38,11 @@ process.on('unhandledRejection', (error) => {
 
 async function init() {
   try {
+    console.log('11111111');
     const config = await getConfig();
-
+    console.log('2222222222');
     container = setupContainer(config);
-
+    console.log('3333333');
     startHttpServer(config, container);
 
     console.log('Bootstrapped');

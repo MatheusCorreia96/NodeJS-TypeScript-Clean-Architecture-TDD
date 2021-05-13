@@ -3,7 +3,7 @@ import localize from 'ajv-i18n';
 import fs from 'fs';
 import path from 'path';
 import { AppContainer } from 'infra/bootstrap/register';
-import { InvalidJsonError } from 'infra/tools/errors/invalid-json';
+import { InvalidJsonError } from '../../infra/tools/errors/invalid-json';
 
 export default class JsonHandler {
 

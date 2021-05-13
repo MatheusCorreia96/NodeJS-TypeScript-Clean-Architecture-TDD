@@ -10,11 +10,17 @@ const compile = async () => {
 const copyFiles = async () => {
   await execPromise('cp package.json dist/');
   await execPromise('cp package-lock.json dist/');
-  await execPromise('cp src/infra/config/git-ignored/config.json src/infra/config/');
-  await execPromise('cp src/infra/config/git-ignored/databases.json src/infra/config/');
-  await execPromise('cp src/infra/config/config.json dist/infra/config');
-  await execPromise('cp src/infra/config/databases.json dist/infra/config');
-  await execPromise('cp -R src/infra/tools/validators dist/infra/tools/validators');
+  await execPromise(
+    'cp src/infra/config/git-ignored/config.json src/infra/config/'
+  );
+  await execPromise(
+    'cp src/infra/config/git-ignored/databases.json src/infra/config/'
+  );
+  await execPromise('cp src/infra/config/config.json dist/src/infra/config');
+  await execPromise('cp src/infra/config/databases.json dist/src/infra/config');
+  await execPromise(
+    'cp -R src/infra/tools/validators dist/src/infra/tools/validators'
+  );
 };
 
 const installDependencies = async () => {
@@ -25,9 +31,7 @@ const clean = async () => {
   await execPromise('rm -rf dist/infra/config/git-ignored');
 };
 
-gulp.task('build', gulp.series([
-  compile,
-  copyFiles,
-  installDependencies,
-  clean,
-]));
+gulp.task(
+  'build',
+  gulp.series([compile, copyFiles, installDependencies, clean])
+);

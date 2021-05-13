@@ -1,7 +1,7 @@
 import { GetAccessCountGateway } from '@interactors/access-count/get/get-access-count.types';
 import { Config } from 'infra/config/config';
 import { AppContainer } from 'infra/bootstrap/register';
-import { AxiosStatic, AxiosRequestConfig } from 'axios'
+import { AxiosStatic, AxiosRequestConfig } from 'axios';
 
 export default class GetAccessCountImpl implements GetAccessCountGateway {
   private config: Config;
@@ -13,10 +13,10 @@ export default class GetAccessCountImpl implements GetAccessCountGateway {
   }
 
   public async getCount(): Promise<any> {
-   const options: AxiosRequestConfig = {
+    const options: AxiosRequestConfig = {
       method: 'get',
-      url: `${this.config.api.url}/info/${this.config.api.name}/${this.config.api.secretKey}`
-    }
+      url: `${this.config.api.url}/info/${this.config.api.name}/${this.config.api.secretKey}`,
+    };
 
     return this.axios(options);
   }

@@ -11,7 +11,7 @@ process.on('SIGINT', () => {
 });
 
 const startNodeServer = () => {
-  if (!fs.existsSync('dist/app.js')) {
+  if (!fs.existsSync('dist/src/app.js')) {
     return;
   }
 
@@ -21,17 +21,20 @@ const startNodeServer = () => {
     nodeApp.kill('SIGINT');
   }
 
-  let params = ['dist/app.js'];
+  let params = ['dist/src/app.js'];
 
   if (process.env.DEBUG || argv.debug) {
     params.unshift('--inspect=0.0.0.0:9229');
   }
 
   nodeApp = childProcess.spawn('node', params, {
-    env: Object.assign({
-      AWS_SDK_LOAD_CONFIG: 1,
-      AWS_REGION: 'us-east-1',
-    }, process.env)
+    env: Object.assign(
+      {
+        AWS_SDK_LOAD_CONFIG: 1,
+        AWS_REGION: 'us-east-1',
+      },
+      process.env
+    ),
   });
 
   nodeApp.stdout.on('data', (data) => {
@@ -41,30 +44,30 @@ const startNodeServer = () => {
   nodeApp.stderr.on('data', (data) => {
     console.error(data.toString());
   });
-
 };
 
 const tsWatch = (done) => {
-  const ts = childProcess.spawn('tsc', ['-w', '--skipLibCheck'], {shell: process.platform == 'win32'});
-  
+  const ts = childProcess.spawn('tsc', ['-w', '--skipLibCheck'], {
+    shell: process.platform == 'win32',
+  });
+
   ts.stdout.on('data', (data) => {
     console.log(data.toString());
     if (data.toString().includes('Found')) {
       startNodeServer();
     }
   });
-  
+
   process.on('SIGINT', () => {
     done();
   });
 };
 
 gulp.task('eslint', function () {
-  return gulp.src(['*/.ts', '*/.js', '!node_modules/*', '!dist/*'])
+  return gulp
+    .src(['*/.ts', '*/.js', '!node_modules/*', '!dist/*'])
     .pipe(eslint())
     .pipe(eslint.format());
 });
 
-gulp.task('default', gulp.series([
-  tsWatch
-]));
+gulp.task('default', gulp.series([tsWatch]));

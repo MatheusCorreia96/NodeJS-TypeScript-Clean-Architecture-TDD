@@ -1,5 +1,5 @@
 import Ajv from 'ajv';
-import { ApplicationError } from 'infra/tools/errors/application';
+import { ApplicationError } from './application';
 
 export type TranslatedJsonError = {
   chave: string,

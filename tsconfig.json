@@ -18,21 +18,11 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "paths": {
-      "@adapters/*": [
-        "adapters/*"
-      ],
-      "@constants/*": [
-        "constants/*"
-      ],
-      "@interactors/*": [
-        "interactors/*"
-      ],
-      "@entities/*": [
-        "entities/*"
-      ],
-      "@middlewares/*": [
-        "infra/http/middlewares/*"
-      ]
+      "@adapters/*": ["adapters/*"],
+      "@constants/*": ["constants/*"],
+      "@interactors/*": ["interactors/*"],
+      "@entities/*": ["entities/*"],
+      "@middlewares/*": ["infra/http/middlewares/*"]
     }
   }
 }
