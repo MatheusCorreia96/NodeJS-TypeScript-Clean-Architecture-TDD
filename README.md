@@ -2,6 +2,8 @@
     API Count Access
 </h1>
 
+Application NodeJS + TypeScript+ Clean Architecture + TDD 
+
 # Tecnologias
 
 Este projeto foi construído utilizando as seguintes tecnologias:
